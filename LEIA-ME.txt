@@ -1,7 +1,6 @@
-PROJETO 10K V3.5
-1. Execute ATUALIZACAO-SUPABASE-V3-5.sql no SQL Editor do Supabase.
-2. Publique index.html, sw.js, manifest.webmanifest e os arquivos de ícone na raiz do GitHub.
-3. Não publique o SQL: ele é apenas para execução no Supabase.
-4. Acesse o aplicativo, navegue pelas fases e use Editar plano em um treino.
-5. O primeiro treino registrado permanece intacto.
-NOTA: o plano é orientativo, não é prescrição médica. A fase final pode demandar sessão mais longa que 40 min para 10 km.
+PROJETO 10K V3.6
+1. Execute ATUALIZACAO-SUPABASE-V3-6.sql no SQL Editor (após as migrações anteriores).
+2. Publique index.html, sw.js, manifest.webmanifest, favicon.svg e ícones na raiz do GitHub Pages.
+3. Atualize o PWA. Valide: treino feito sem botão Editar; descanso em cinza; metas por conta.
+4. Multiusuário: cada conta Supabase tem seus próprios registros, ausências, edições de plano e metas. Crie contas individuais no Supabase Auth; não compartilhe senhas.
+5. Não há cadastro público nem administração de equipes/organizações nesta versão.
