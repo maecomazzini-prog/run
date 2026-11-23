@@ -1,9 +1,7 @@
-PROJETO 10K V3.4
-
-Novidade: 4 animações SVG aleatórias após o Supabase confirmar um treino. KATCHAU! apresenta três raios e título separado.
-
-Não há SQL novo. Mantenha as tabelas e políticas já configuradas na V3.3.
-
-Publique index.html, sw.js, manifest.webmanifest, favicon.svg e ícones na raiz do repositório GitHub Pages. Aguarde a publicação e atualize o PWA.
-
-Não publique chaves secretas ou service_role.
+PROJETO 10K V3.5
+1. Execute ATUALIZACAO-SUPABASE-V3-5.sql no SQL Editor do Supabase.
+2. Publique index.html, sw.js, manifest.webmanifest e os arquivos de ícone na raiz do GitHub.
+3. Não publique o SQL: ele é apenas para execução no Supabase.
+4. Acesse o aplicativo, navegue pelas fases e use Editar plano em um treino.
+5. O primeiro treino registrado permanece intacto.
+NOTA: o plano é orientativo, não é prescrição médica. A fase final pode demandar sessão mais longa que 40 min para 10 km.
