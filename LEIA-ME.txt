@@ -1,6 +1,9 @@
-PROJETO 10K V3.3
-1) Execute ATUALIZACAO-SUPABASE-V3-3.sql no SQL Editor do Supabase ANTES de publicar.
-2) Envie index.html, manifest.webmanifest, favicon.svg, icon-192.png, icon-512.png, apple-touch-icon.png e sw.js à raiz do GitHub. NÃO envie SQL para executar no navegador.
-3) Reabra/atualize o PWA. Dados anteriores permanecem preservados.
-4) Meta 10km = maior continuous_run_km; treinos antigos sem marca não são estimados.
-5) Não realizado = tabela missed_workouts; registro concluído prevalece e limpa ausência do mesmo dia.
+PROJETO 10K V3.4
+
+Novidade: 4 animações SVG aleatórias após o Supabase confirmar um treino. KATCHAU! apresenta três raios e título separado.
+
+Não há SQL novo. Mantenha as tabelas e políticas já configuradas na V3.3.
+
+Publique index.html, sw.js, manifest.webmanifest, favicon.svg e ícones na raiz do repositório GitHub Pages. Aguarde a publicação e atualize o PWA.
+
+Não publique chaves secretas ou service_role.
