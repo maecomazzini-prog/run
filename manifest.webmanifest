@@ -1,8 +1,8 @@
 {
   "id": "/run/",
-  "name": "Projeto 10K",
-  "short_name": "Projeto 10K",
-  "description": "Sua jornada até os 10 quilômetros",
+  "name": "Run For It",
+  "short_name": "Run For It",
+  "description": "Treinos, metas e evolução da sua corrida",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
