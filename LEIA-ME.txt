@@ -1,0 +1,5 @@
+Projeto 10K PWA V3.2
+Envie todos os arquivos desta pasta para a raiz do repositório GitHub maecomazzini-prog/run.
+Não envie a pasta em si: envie seu conteúdo.
+O cache permite abrir a interface em algumas condições offline, mas salvar/sincronizar treinos exige conexão.
+A URL e chave publishable do Supabase estão no index.html; nunca use chave secret/service_role no navegador.
