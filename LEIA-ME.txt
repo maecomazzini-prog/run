@@ -1,6 +1,6 @@
-PROJETO 10K V3.6
-1. Execute ATUALIZACAO-SUPABASE-V3-6.sql no SQL Editor (após as migrações anteriores).
-2. Publique index.html, sw.js, manifest.webmanifest, favicon.svg e ícones na raiz do GitHub Pages.
-3. Atualize o PWA. Valide: treino feito sem botão Editar; descanso em cinza; metas por conta.
-4. Multiusuário: cada conta Supabase tem seus próprios registros, ausências, edições de plano e metas. Crie contas individuais no Supabase Auth; não compartilhe senhas.
-5. Não há cadastro público nem administração de equipes/organizações nesta versão.
+Projeto 10K V3.7
+1. Execute ATUALIZACAO-SUPABASE-V3-7.sql no SQL Editor.
+2. Publique index.html, manifest.webmanifest, sw.js, favicon.svg e os PNG na raiz do GitHub Pages.
+3. Atualize a página e teste login, treino extra, gráfico e revisão.
+4. Referências são ilustrativas e configuráveis por usuário na tabela user_weekly_targets.
+5. O app não altera o plano automaticamente.
