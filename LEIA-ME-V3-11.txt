@@ -1,0 +1,5 @@
+Run For It V3.11 — 4 novas animações após salvar treino com sucesso.
+8 opções totais, sorteio sem repetição consecutiva.
+Sem alterações no Supabase.
+Publique os arquivos do ZIP no GitHub Pages.
+No Safari, reabra o app para atualizar o cache PWA.
