@@ -1,0 +1,15 @@
+RUN FOR IT V3.10 — CORREÇÕES DE INTERFACE
+
+1. Publique index.html e sw.js (e demais arquivos estáticos) no GitHub Pages.
+2. Não reexecute CONFIGURAR-BEATRISSE.sql: o plano e os registros já estão funcionando.
+3. Opcional: execute REPARAR-TEXTOS-USUARIO-B-OPCIONAL.sql no SQL Editor para corrigir textos já gravados no banco. A interface também corrige a exibição desses textos sem precisar do SQL.
+4. No Safari iPhone, feche a aba, reabra a URL e atualize. Se usar ícone na tela inicial, feche e reabra o app após a publicação.
+
+Mudanças:
+- Corrige textos corrompidos vindos do banco (ex.: desaceleraÃ§Ã£o, 10â€“15).
+- Remove a seção de edição de metas, preservando metas individuais no Supabase.
+- Remove o campo Velocidade média do registro (não apaga valores históricos).
+- Renomeia para Maior corrida contínua (min), placeholder Ex.: 5 (sem caminhada).
+- Incrementa o cache da PWA para forçar atualização.
+
+Nenhuma alteração obrigatória no esquema do Supabase.
