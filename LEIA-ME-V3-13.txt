@@ -1,0 +1,3 @@
+Run For It V3.13 — formulário dinâmico por atividade.
+Publique index.html e os ícones no GitHub Pages. Não requer SQL: detalhes de academia/Hyrox são salvos no campo notes já existente.
+Teste alternar atividades, salvar e recarregar com contas A e B.
