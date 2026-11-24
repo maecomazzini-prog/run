@@ -1,0 +1,10 @@
+RUN FOR IT V3.12 — EDIÇÃO INDIVIDUAL DE TREINO
+
+1. Execute ATUALIZACAO-SUPABASE-V3-12.sql no Supabase SQL Editor.
+2. Substitua os arquivos do GitHub Pages pelos deste pacote e faça commit.
+3. Atualize o Safari/PWA e teste Editar plano.
+4. Escolha o tipo, escreva título e descrição, e salve.
+5. Confira a persistência após recarregar a página e a conta do outro usuário.
+
+A atualização altera apenas o card da semana/dia selecionados. Não altera a grade-base, semanas passadas ou outros usuários. Não apaga históricos.
+A tabela planned_workout_overrides deve já existir (V3.5).

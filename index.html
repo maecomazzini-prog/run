@@ -91,6 +91,11 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 @media(max-width:560px){.workout{gap:10px;padding:13px}.workout-info{flex-basis:auto}.workout-actions{width:100%;gap:7px}.workout-actions .btn{flex:0 1 auto;max-width:100%;padding:9px 10px;font-size:11px}.workout-meta{font-size:11px}}
 
 .evolution-panel{margin:18px 0}.evolution-legend{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin:12px 0}.legend-line{display:inline-block;width:20px;height:4px;vertical-align:middle;margin-right:5px;border-radius:4px}.legend-line.expected{background:#ff8a24}.legend-line.actual{background:#c7ff3d}.weekly-review{margin-top:14px}.review-box{border:1px solid #454b55;border-radius:12px;padding:17px;background:#22262c}.review-box h3{font-size:15px;margin:0 0 7px}.review-box p{font-size:13px;line-height:1.6;color:#c2c7d0;margin:6px 0}.review-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.extra-check{display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:700}.extra-check input{width:18px;height:18px;accent-color:#ff8a24}.extra-pill{font-size:11px;color:#ffb56c;background:#ff8a241c;padding:4px 8px;border-radius:20px;display:inline-block;margin-top:6px}.evolution-panel svg{width:100%;height:auto;max-height:330px}.evolution-panel .chart-area{overflow-x:auto}.evolution-panel .chart-area svg{min-width:530px}.extra-workout{border-left:3px solid #ff8a24}@media(max-width:650px){.evolution-panel{margin:12px 0}.review-actions .btn{flex:1}.evolution-legend{gap:8px}}
+
+/* V3.12 — editor individual de treino */
+.plan-modal{position:fixed;inset:0;background:#050608d9;z-index:70;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px)}
+.plan-modal.open{display:flex}.plan-modal-panel{background:#1b1e24;border:1px solid #454952;border-radius:20px;width:min(510px,100%);max-height:calc(100dvh - 32px);overflow-y:auto;padding:24px;box-shadow:0 24px 80px #000b}.plan-modal h2{font:800 29px 'Barlow Condensed';margin:0 0 6px}.plan-modal p{font-size:12px;color:var(--muted);line-height:1.5}.plan-modal .field{margin-top:15px}.plan-modal .field textarea{min-height:110px}.plan-modal-actions{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap;margin-top:22px}.plan-modal-actions button{flex:1}.plan-modal .field small{font-size:10px;color:var(--muted)}.plan-modal .error{color:#ff9ca5;font-size:11px;min-height:14px;margin-top:8px}.workout.is-rest{opacity:1}.workout-title{font-size:13px}.workout-type{color:var(--orange2);font-size:10px;margin-top:3px}.workout-icon i{font-size:17px}
+@media(max-width:560px){.plan-modal-panel{padding:19px}.plan-modal-actions{flex-direction:column-reverse}.plan-modal-actions button{width:100%}}
 </style>
 </head>
 <body>
@@ -148,7 +153,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
     <form id="logForm">
       <div class="form-grid">
         <div class="field"><label for="logDate">Data</label><input id="logDate" type="date" required></div>
-        <div class="field"><label for="activity">Atividade</label><select id="activity"><option>Corrida</option><option>Caminhada</option><option>Bicicleta</option><option>Fortalecimento</option><option>Descanso ativo</option></select></div>
+        <div class="field"><label for="activity">Atividade</label><select id="activity"><option>Corrida</option><option>Caminhada</option><option>Bicicleta</option><option>Fortalecimento</option><option>Academia</option><option>Misto</option><option>Descanso ativo</option></select></div>
         <div class="field"><label for="distance">Distância (km)</label><input id="distance" type="number" min="0" step="0.01" placeholder="Ex.: 2,5"></div>
         <div class="field"><label for="duration">Duração (min)</label><input id="duration" type="number" min="0" step="1" placeholder="Ex.: 30" required></div>
         <div class="field"><label for="continuousRun">Maior corrida contínua (min)</label><input id="continuousRun" type="number" min="0" step="1" placeholder="Ex.: 5 (sem caminhada)"></div>
@@ -169,6 +174,7 @@ html,body{width:100%;max-width:100%;overflow-x:clip}
 </div>
 <div class="auth-overlay" id="authOverlay"><div class="auth-box"><div class="brand" style="margin-bottom:18px"><div class="brand-mark"><i class="fa-solid fa-bolt"></i></div><div><div class="brand-name">RUN <span>FOR IT</span></div><div class="brand-sub">ACESSO PESSOAL SEGURO</div></div></div><h2>Bem-vindo de volta.</h2><p>Entre uma vez em cada dispositivo. Sua sessão ficará salva para sincronizar os treinos automaticamente.</p><form id="loginForm"><div class="field"><label for="email">E-mail da sua conta</label><input id="email" type="email" autocomplete="username" required placeholder="voce@email.com"></div><div class="field"><label for="password">Senha</label><input id="password" type="password" autocomplete="current-password" required minlength="8" placeholder="Sua senha pessoal"></div><button class="btn btn-primary" style="width:100%" id="signInButton" type="submit">Entrar no Run For It</button></form><p id="authMessage" role="status" aria-live="polite"></p><p style="font-size:10px">Conta criada previamente no Supabase. Nenhuma senha é armazenada neste arquivo.</p></div></div>
 <div class="celebration" id="celebration" role="dialog" aria-modal="true" aria-labelledby="celebrationTitle" aria-describedby="celebrationMessage" aria-hidden="true"><div class="celebration-card"><button type="button" class="celebration-close" id="celebrationClose" aria-label="Fechar celebração">×</button><div class="celebration-art" id="celebrationArt" aria-hidden="true"></div><div class="celebration-title" id="celebrationTitle"></div><div class="celebration-message" id="celebrationMessage"></div></div></div>
+<div class="plan-modal" id="planEditor" role="dialog" aria-modal="true" aria-labelledby="planEditorTitle" aria-hidden="true"><div class="plan-modal-panel"><h2 id="planEditorTitle">Editar treino</h2><p id="planEditorContext">A alteração vale apenas para este dia, nesta semana.</p><form id="planEditorForm"><div class="field"><label for="planEditorActivity">Tipo de atividade</label><select id="planEditorActivity" required><option value="Corrida">🏃 Corrida</option><option value="Caminhada">🚶 Caminhada</option><option value="Bicicleta">🚴 Bicicleta</option><option value="Academia">🏋️ Academia</option><option value="Misto">🔀 Misto</option><option value="Descanso ativo">🌙 Descanso ativo</option></select></div><div class="field"><label for="planEditorName">Título do treino</label><input id="planEditorName" maxlength="100" required placeholder="Ex.: Corrida leve de recuperação"><small>Este título aparecerá no card da agenda.</small></div><div class="field"><label for="planEditorDescription">Descrição</label><textarea id="planEditorDescription" maxlength="600" required placeholder="Descreva aquecimento, atividade principal e recuperação."></textarea><small>Até 600 caracteres.</small></div><div class="error" id="planEditorError" role="alert"></div><div class="plan-modal-actions"><button type="button" class="btn btn-ghost" id="planEditorCancel">Cancelar</button><button type="submit" class="btn btn-primary" id="planEditorSave"><i class="fa-solid fa-floppy-disk"></i> Salvar alteração</button></div></form></div></div>
 <div class="toast" id="toast"></div>
 <script>
 /* CONFIGURE AQUI: Project URL e anon/public key do Supabase. Nunca use service_role no navegador. */
@@ -216,7 +222,7 @@ function weekPlan(w){
  // O desafio é adicional e não substitui o treino regular nem é exigência automática para avançar.
  return {days,bonus:w===p.end?p.bonus:null,phase:p};
 }
-function getWorkout(w,i){const o=overrides.find(x=>x.week_number===w&&x.day_index===i);return o?workout(o.activity,o.description):weekPlan(w).days[i]}
+function getWorkout(w,i){const o=overrides.find(x=>x.week_number===w&&x.day_index===i);return o?{...workout(o.activity,o.description),title:o.title||o.activity}:weekPlan(w).days[i]}
 function notify(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600)}
 function localLoad(){try{logs=JSON.parse(localStorage.getItem('runforit_logs')||'[]')}catch{logs=[]}}
 function localSave(){localStorage.setItem('runforit_logs',JSON.stringify(logs))}
@@ -320,27 +326,46 @@ function renderWeek(){
  $('phaseJump').value=String(p);
  const names=['SEG','TER','QUA','QUI','SEX','SÁB','DOM'];
  $('weekGrid').innerHTML=names.map((n,i)=>{const iso=weekDates(w)[i],d=new Date(iso+'T12:00:00'),done=logs.some(x=>x.workout_date===iso&&!x.is_extra),no=!done&&isMissed(iso),today=iso===todayISO(),desc=getWorkout(w,i).activity;return `<div class="day ${done?'done':''} ${no?'missed':''} ${today?'today':''} ${i===6?'rest':''}"><div class="dow">${n}</div><div class="date">${d.getDate()}</div><div class="kind">${done?'Realizado':no?'Não realizado':esc(desc)}</div></div>`}).join('');
- $('workoutList').innerHTML=Array.from({length:7},(_,i)=>{const x=getWorkout(w,i),iso=weekDates(w)[i],done=logs.some(z=>z.workout_date===iso&&!z.is_extra),no=!done&&isMissed(iso),rest=i===6;const icon=rest?'fa-moon':x.activity==='Bicicleta'?'fa-bicycle':x.activity==='Fortalecimento'?'fa-dumbbell':x.activity==='Corrida'?'fa-person-running':'fa-person-walking';return `<div class="workout ${done?'is-complete':rest?'is-rest':''}"><div class="workout-icon"><i class="fa-solid ${icon}"></i></div><div class="workout-info"><div class="workout-title">${namesLong[i]} · ${esc(x.activity)}</div><div class="workout-meta">${esc(x.description)}</div>${done?'<div class="workout-status done">Treino registrado nesta data</div>':no?'<div class="workout-status missed">Não realizado</div>':''}</div><div class="workout-actions">${done?'<span class="state-done">✓ Feito</span>':`<button class="btn btn-ghost btn-small" onclick="editPlanned(${w},${i})">Editar plano</button>`}${done?'':no?`<button class="btn btn-ghost btn-small" onclick="undoMissed('${iso}')">Desfazer</button>`:rest?'<span class="state-rest">Descanso</span>':`<button class="btn btn-ghost btn-small" onclick="prefillPlanned(${w},${i},'${iso}')">Registrar</button><button class="btn btn-missed btn-small" onclick="markMissed('${iso}','${esc(x.activity)}')">Não realizado</button>`}</div></div>`}).join('')+renderExtraWorkouts(w);
+ $('workoutList').innerHTML=Array.from({length:7},(_,i)=>{const x=getWorkout(w,i),iso=weekDates(w)[i],done=logs.some(z=>z.workout_date===iso&&!z.is_extra),no=!done&&isMissed(iso),rest=x.activity==='Descanso ativo';const icon=activityIcon(x.activity);return `<div class="workout ${done?'is-complete':rest?'is-rest':''}"><div class="workout-icon"><i class="fa-solid ${icon}"></i></div><div class="workout-info"><div class="workout-title">${namesLong[i]} · ${esc(x.title||x.activity)}</div><div class="workout-type">${x.title?esc(x.activity):''}</div><div class="workout-meta">${esc(x.description)}</div>${done?'<div class="workout-status done">Treino registrado nesta data</div>':no?'<div class="workout-status missed">Não realizado</div>':''}</div><div class="workout-actions">${done?'<span class="state-done">✓ Feito</span>':`<button class="btn btn-ghost btn-small" onclick="editPlanned(${w},${i})">Editar plano</button>`}${done?'':no?`<button class="btn btn-ghost btn-small" onclick="undoMissed('${iso}')">Desfazer</button>`:rest?'<span class="state-rest">Descanso</span>':`<button class="btn btn-ghost btn-small" onclick="prefillPlanned(${w},${i},'${iso}')">Registrar</button><button class="btn btn-missed btn-small" onclick="markMissed('${iso}','${esc(x.activity)}')">Não realizado</button>`}</div></div>`}).join('')+renderExtraWorkouts(w);
  $('bonusChallenge').innerHTML=plan.bonus?`<strong>★ Desafio bônus da fase ${p+1}</strong><p>${esc(plan.bonus)}</p><small>Opcional, após o último treino desta fase. Só tente se estiver recuperado; pode repetir semanas antes de avançar.</small>`:'';
  $('bonusChallenge').style.display=plan.bonus?'block':'none';
  $('prevWeek').disabled=w===1;$('nextWeek').disabled=w===TOTAL_WEEKS;
 }
-async function editPlanned(w,i){
+function activityIcon(activity){return ({'Corrida':'fa-person-running','Caminhada':'fa-person-walking','Bicicleta':'fa-bicycle','Academia':'fa-dumbbell','Fortalecimento':'fa-dumbbell','Misto':'fa-shuffle','Descanso ativo':'fa-moon'})[activity]||'fa-person-running'}
+let editingPlan=null;
+function closePlanEditor(){const modal=$('planEditor');modal.classList.remove('open');modal.setAttribute('aria-hidden','true');editingPlan=null;document.body.style.overflow=''}
+function editPlanned(w,i){
  if(!currentUser){notify('Entre na sua conta para editar o plano.');return}
- const old=getWorkout(w,i);
- if(isDone(weekISO(i))){notify('Treino realizado: o planejamento não pode mais ser editado.');return}
- const activity=prompt('Atividade planejada (Corrida, Caminhada, Bicicleta, Fortalecimento ou Descanso ativo):',old.activity);
- if(activity===null)return;
- const allowed=['Corrida','Caminhada','Bicicleta','Fortalecimento','Descanso ativo'];
- if(!allowed.includes(activity.trim())){notify('Escolha uma atividade válida.');return}
- const description=prompt('Descreva o treino ajustado (inclua aquecimento, parte principal e desaceleração):',old.description);
- if(description===null)return;
- if(!description.trim()||description.length>600){notify('Informe uma descrição com até 600 caracteres.');return}
- const payload={user_id:currentUser.id,week_number:w,day_index:i,activity:activity.trim(),description:description.trim()};
- const {data,error}=await sb.from('planned_workout_overrides').upsert(payload,{onConflict:'user_id,week_number,day_index'}).select().single();
- if(error){notify('Erro ao salvar alteração: '+error.message);return}
- overrides=overrides.filter(x=>!(x.week_number===w&&x.day_index===i));overrides.push(data);renderWeek();notify('Plano ajustado e sincronizado!');
+ const iso=weekDates(w)[i];
+ if(logs.some(x=>x.workout_date===iso&&!x.is_extra)){notify('Treino realizado: este card não pode mais ser editado.');return}
+ const old=getWorkout(w,i);editingPlan={w,i,iso};
+ $('planEditorContext').textContent=`${namesLong[i]} · ${iso.split('-').reverse().join('/')} · Semana ${w}. Apenas este card será alterado.`;
+ $('planEditorActivity').value=['Corrida','Caminhada','Bicicleta','Academia','Misto','Descanso ativo'].includes(old.activity)?old.activity:old.activity==='Fortalecimento'?'Academia':'Corrida';
+ $('planEditorName').value=old.title||old.activity;
+ $('planEditorDescription').value=old.description;
+ $('planEditorError').textContent='';$('planEditorSave').disabled=false;
+ $('planEditor').classList.add('open');$('planEditor').setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+ $('planEditorName').focus();
 }
+$('planEditorCancel').onclick=closePlanEditor;
+$('planEditor').addEventListener('click',e=>{if(e.target===$('planEditor'))closePlanEditor()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('planEditor').classList.contains('open'))closePlanEditor()});
+$('planEditorForm').addEventListener('submit',async e=>{
+ e.preventDefault();if(!editingPlan||!currentUser)return;
+ const {w,i,iso}=editingPlan;
+ if(logs.some(x=>x.workout_date===iso&&!x.is_extra)){$('planEditorError').textContent='Este treino já foi realizado e não pode ser alterado.';return}
+ const activity=$('planEditorActivity').value,title=$('planEditorName').value.trim(),description=$('planEditorDescription').value.trim();
+ if(!title||!description){$('planEditorError').textContent='Preencha o título e a descrição.';return}
+ const btn=$('planEditorSave');btn.disabled=true;btn.textContent='Salvando...';$('planEditorError').textContent='';
+ const payload={user_id:currentUser.id,week_number:w,day_index:i,activity,title,description};
+ try{
+  const {data,error}=await sb.from('planned_workout_overrides').upsert(payload,{onConflict:'user_id,week_number,day_index'}).select().single();
+  if(error)throw error;
+  overrides=overrides.filter(x=>!(x.week_number===w&&x.day_index===i));overrides.push(data);
+  closePlanEditor();renderWeek();notify('Somente este treino foi atualizado!');
+ }catch(error){$('planEditorError').textContent='Não foi possível salvar: '+(error.message||'erro desconhecido')+'. Confira se executou o SQL V3.12.'}
+ finally{btn.disabled=false;btn.innerHTML='<i class="fa-solid fa-floppy-disk"></i> Salvar alteração'}
+});
 window.editPlanned=editPlanned;
 window.prefillPlanned=(w,i,iso)=>{const x=getWorkout(w,i);$('activity').value=x.activity;$('logDate').value=iso;$('notes').value='Planejado: '+x.description;formFromPlan=true;$('extraWorkout').checked=false;$('logCard').scrollIntoView({behavior:'smooth',block:'center'});$('duration').focus()};
 const namesLong=['Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'];
