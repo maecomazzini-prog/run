@@ -1,14 +1,1 @@
-RUN FOR IT — V3.9 | PLANO INDIVIDUAL DA CONTA B
-
-Conta B já criada: beeatrisse@gmail.com (usada apenas para localizar o UUID em auth.users). Nenhuma senha necessária.
-
-1. Supabase SQL Editor: execute CONFIGURAR-BEATRISSE.sql. Confira antes a data inicial: 2026-11-30 (segunda-feira). Se preferir outra, altere start_monday. O script localiza a conta pelo e-mail exato; se não existir, interrompe e desfaz a transação.
-2. GitHub Pages: substitua index.html, manifest.webmanifest, sw.js, favicon.svg e ícones. NÃO publique o arquivo SQL. O nome global do app passa a Run For It.
-3. Conta B: 15 km, 4 treinos/semana, 32 semanas, segunda/sexta/sábado/domingo; terça/quarta/quinta descanso. Domingo longo até 150 min. Cinco fases individuais.
-4. Conta A: verificar que metas, fases, treinos e histórico continuam como antes. A marca Run For It aparece para ambas as contas, mas o plano de A não é atualizado pelo SQL.
-
-Atenção: o SQL substitui configurações de plano, 32 referências semanais e 224 itens da agenda APENAS da conta B. Não apaga histórico de treinos. Se a conta B já tiver personalizações, serão substituídas para essas semanas.
-
-A progressão é orientativa: confirmar a capacidade inicial de 6–8 km, avaliar fadiga e dor, e revisar a carga semanal antes de avançar. Se 15 km ultrapassarem 150 minutos, não forçar o limite.
-
-A marca e os textos do app foram atualizados. O endereço GitHub Pages continua /run/; alterar a URL é uma decisão separada.
+V3.16: referência zero na readaptação do plano padrão de 10 km; comparação interpolada. Publique index.html. Sem SQL.
