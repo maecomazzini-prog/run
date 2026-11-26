@@ -1,0 +1,7 @@
+Run For It V3.14
+1. Execute ATUALIZACAO-V3-14.sql no Supabase.
+2. Publique index.html e ícones no GitHub, mantendo os demais arquivos PWA existentes.
+3. Teste as duas contas. Conquistas históricas são reconhecidas sem modal; novas são celebradas.
+4. Desafios aceitos são extras independentes; escolha uma data dentro do plano.
+5. Referências nulas permanecem ausentes.
+Validação: sintaxe JavaScript; integração Supabase e Safari pendentes.
